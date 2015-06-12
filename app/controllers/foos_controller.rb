@@ -1,14 +1,19 @@
-class FoosController < ApplicationController
-  include Debugger
+require "./lib/debugger.rb"
 
+class FoosController < ApplicationController
   before_action :set_foo, only: [:show, :edit, :update, :destroy]
 
   # GET /foos
   # GET /foos.json
   def index
     a = 123
+
+    puts "break point 1"
     debug(binding)
+
     @foos = Foo.all
+
+    puts "break point 2"
     debug(binding)
   end
 
