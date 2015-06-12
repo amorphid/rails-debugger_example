@@ -15,4 +15,11 @@ def repl(binding)
   end
 end
 
-repl(binding)
+# How does Pry give you an IRB like prompt in a running program?
+def debug(binding)
+  repl(binding)
+end
+
+a = 123
+debug(binding)
+b = 456
