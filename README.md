@@ -1,7 +1,8 @@
 Rails Debugger Example
 ======================
 
-A demo app that explores the magic of debuggers.  Created for a lightning talk at [Ruby Nation 2015](http://www.rubynation.org/).
+A demo app that explores the magic of debuggers.  Hastily thrown together for a lightning talk purposes at [Ruby Nation 2015](http://www.rubynation.org/).
+
 
 Setup
 =====

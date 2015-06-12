@@ -1,6 +1,8 @@
 require "./lib/debugger.rb"
 
 class FoosController < ApplicationController
+  include Debugger
+
   before_action :set_foo, only: [:show, :edit, :update, :destroy]
 
   # GET /foos
