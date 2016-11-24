@@ -18,7 +18,7 @@ module Debugger
     trace_point.enable
   end
 
-  def repl(binding)
+  def repl(binding)    
     loop do
       print "irb knockoff> "    # input prompt
       input = STDIN.gets.chomp  # grab the user input
@@ -34,4 +34,6 @@ module Debugger
       end
     end
   end
+
+  extend self
 end
