@@ -1,13 +1,13 @@
 module Debugger
   def debug(binding)
     should_start_repl = false
+    repl_completed    = false
     thread = Thread.current
 
     trace_point = TracePoint.new do |tp|
-      $tp = tp # try avoiding global variables in general!
-
-      if should_start_repl && thread == Thread.current
+      if should_start_repl && thread == Thread.current && repl_completed == false
         repl(binding)
+        repl_completed = true
       else
         if tp.event == :return && tp.method_id == :debug
           should_start_repl = true
@@ -21,8 +21,9 @@ module Debugger
   def repl(binding)
     loop do
       print "irb knockoff> "    # input prompt
-      input = gets.chomp        # grab the user input
-      break if input == "break" # if needed, breaks out of the loop
+      input = STDIN.gets.chomp  # grab the user input
+      break if input == "break"
+      system("kill -9 #{Process.pid}") if input == "kill"
 
       begin
         result = eval(input, binding)         # evaluates the input
